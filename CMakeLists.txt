@@ -1,19 +1,37 @@
 cmake_minimum_required(VERSION 3.28)
-message(STATUS "  [START] OnyxRoot project setup")
+message(STATUS "[START] OnyxRoot project setup")
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+if(NOT DEFINED onxrt)
+    set(onxrt ON)
+endif()
+if(NOT DEFINED onxed)
+    set(onxed ON)
+endif()
+if(NOT DEFINED onxtt)
+    set(onxtt OFF)
+endif()
 
 project(
     OnyxRoot
     LANGUAGES CXX
 )
 
-
 # OnyxRoot (lib)
-message(STATUS "    [START] OnyxRoot library setup")
-add_subdirectory(src/onxrt onxrt)
+if(onxrt)
+    message(STATUS "  [START] OnyxRoot library setup")
+    add_subdirectory(src/onxrt onxrt)
+endif()
 # OnyxEdit (app)
-message(STATUS "    [START] OnyxEdit application setup")
-add_subdirectory(src/onxed onxed)
+if(onxed)
+    message(STATUS "  [START] OnyxEdit application setup")
+    add_subdirectory(src/onxed onxed)
+endif()
+# OnyxTest (apps)
+if(onxtt)
+    message(STATUS "  [START] OnyxEdit application setup")
+    add_subdirectory(test onxtt)
+endif()
 
-message(STATUS "  [end] OnyxRoot project setup")
+message(STATUS "[END] OnyxRoot project setup")

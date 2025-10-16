@@ -1,6 +1,6 @@
 add_library(
     onxrt
-    onx_lib.cc
+    onxrt_thr.cc
 )
 add_library(OnyxRoot::OnyxRoot ALIAS onxrt)
 

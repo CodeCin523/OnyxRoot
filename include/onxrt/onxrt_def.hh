@@ -22,6 +22,15 @@ namespace onxrt {
     using fast_u32  = uint_fast32_t;
     using fast_i64  = int_fast64_t; // 64
     using fast_u64  = uint_fast64_t;
+
+    template <typename handler>
+    class tHandler {
+    protected:
+        static bool s_isHandled;
+        
+    public:
+        static constexpr handler &getHandler();
+    };
 };
 
 #endif
