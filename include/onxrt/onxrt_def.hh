@@ -2,9 +2,17 @@
 #define __ONXRT_DEF_HH__
 
 #include <cstdint>
+#include <limits>
 #include <stddef.h>
 
+#ifdef _WIN64
+#define onxrt_OS_WIN
+#elifdef __unix__
+#define onxrt_OS_UNIX
+#endif
+
 namespace onxrt {
+// TYPES
     using i8        = int8_t;       // 8
     using u8        = uint8_t;
     using i16       = int16_t;      // 16
@@ -26,11 +34,35 @@ namespace onxrt {
     template <typename handler>
     class tHandler {
     protected:
-        static bool s_isHandled;
+        static u32 s_handInstanceCount;
         
+        static void handInitialize();
+        static void handTerminate();
+
     public:
-        static constexpr handler &getHandler();
+        // static handler &getHandler();
     };
+
+// CONSTANTS
+    constexpr i8  i8_MIN  = std::numeric_limits<i8>::min();
+    constexpr i8  i8_MAX  = std::numeric_limits<i8>::max();
+    constexpr u8  u8_MIN  = std::numeric_limits<u8>::min();
+    constexpr u8  u8_MAX  = std::numeric_limits<u8>::max();
+
+    constexpr i16 i16_MIN = std::numeric_limits<i16>::min();
+    constexpr i16 i16_MAX = std::numeric_limits<i16>::max();
+    constexpr u16 u16_MIN = std::numeric_limits<u16>::min();
+    constexpr u16 u16_MAX = std::numeric_limits<u16>::max();
+
+    constexpr i32 i32_MIN = std::numeric_limits<i32>::min();
+    constexpr i32 i32_MAX = std::numeric_limits<i32>::max();
+    constexpr u32 u32_MIN = std::numeric_limits<u32>::min();
+    constexpr u32 u32_MAX = std::numeric_limits<u32>::max();
+
+    constexpr i64 i64_MIN = std::numeric_limits<i64>::min();
+    constexpr i64 i64_MAX = std::numeric_limits<i64>::max();
+    constexpr u64 u64_MIN = std::numeric_limits<u64>::min();
+    constexpr u64 u64_MAX = std::numeric_limits<u64>::max();
 };
 
 #endif
