@@ -34,10 +34,10 @@ namespace onxrt {
     template <typename handler>
     class tHandler {
     protected:
-        static u32 s_handInstanceCount;
+        static u32 s_handlerInstanceCount;
         
-        static void handInitialize();
-        static void handTerminate();
+        static void handlerInitialize();
+        static void handlerTerminate();
 
     public:
         // static handler &getHandler();
