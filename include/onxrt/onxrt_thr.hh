@@ -5,7 +5,7 @@
 
 namespace onxrt {
     class THR_PoolHandler : public tHandler<THR_PoolHandler> {
-        friend class tHandler;
+        friend class tHandler<THR_PoolHandler>;
     public:
         struct ThWork;
         using ThFunc = void (*)(const ThWork *);
